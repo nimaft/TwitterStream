@@ -13,6 +13,11 @@ def getApi():
 
     return render_template('index.html')
 
+#Route to redirect empty result requests to the main page
+@bp.route('/results')
+def rediHome():
+    return redirect(url_for('apiCall.getApi'))
+
 
 @bp.route('/results/<term>', methods=('GET', 'POST'))
 def results(term=None):
@@ -48,11 +53,7 @@ def results(term=None):
             embDict.append(embUrl["html"].replace("\n",""))
             i += 1
         
-        print(embDict)
-        
         return render_template('results.html', rDict = embDict)
-
-    
     
     return render_template('index.html')
         

@@ -12,22 +12,22 @@ blockquote.twitter-tweet {
     margin: 10px 5px;
     padding: 0 16px 16px 16px;
     max-width: 468px;
-  }
+}
   
-  blockquote.twitter-tweet p {
+blockquote.twitter-tweet p {
     font-size: 16px;
     font-weight: normal;
     line-height: 20px;
-  }
+}
   
-  blockquote.twitter-tweet a {
+blockquote.twitter-tweet a {
     color: inherit;
     font-weight: normal;
     text-decoration: none;
     outline: 0 none;
-  }
+}
   
-  blockquote.twitter-tweet a:hover,
-  blockquote.twitter-tweet a:focus {
+blockquote.twitter-tweet a:hover,
+blockquote.twitter-tweet a:focus {
     text-decoration: underline;
-  }
+}

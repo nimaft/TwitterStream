@@ -24,20 +24,6 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    # a simple page that says hello
-    """
-    @app.route('/', methods=('GET', 'POST'))
-    def hello():
-        
-        if request.method == 'POST':
-            term = request.form['query']
-            return redirect(url_for('apiCall.results'), term= term
-        else:    
-            return render_template('index.html')
-    """
-            
-        
-
     from . import apiCall
     app.register_blueprint(apiCall.bp)
 
