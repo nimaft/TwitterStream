@@ -32,6 +32,8 @@ blockquote.twitter-tweet a:focus {
     text-decoration: underline;
 }
 
+
+/* 404 page styles */
 .fundo{
     animation: scales 3s alternate  infinite;
     transform-origin: center;
@@ -117,3 +119,5 @@ blockquote.twitter-tweet a:focus {
      
     
   }
+
+ 

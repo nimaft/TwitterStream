@@ -1,5 +1,6 @@
 from flask import (Blueprint, render_template, redirect, request, url_for, flash)
 import requests
+from urllib.parse import quote_plus
 
 bp = Blueprint('apiCall', __name__)
 
@@ -24,14 +25,15 @@ def results(term=None):
     
     if request.method == 'GET' and term:
         
-        #Getting form field from '/' route 
-        #query = term
+        #Getting search term from form field @ '/' route and converting it to url friendly string
+        query = quote_plus(term)
 
         #Requesting tweets from Streaming API, returns 10 tweets
         bt = 'AAAAAAAAAAAAAAAAAAAAAAONJQEAAAAA1wHsP7ozvwm0FPeVGgzqODg0Dhs%3DppJgXkaWKv3w2knqe7FSF2GquoVHzW4mTtPYYZotzeibD5OdSk'
 
         headers = {'Authorization': 'Bearer '+bt}
-        response = requests.get("https://api.twitter.com/2/tweets/search/recent?query="+term+"&tweet.fields=author_id",headers=headers)
+        query = "https://api.twitter.com/2/tweets/search/recent?query="+query+"&tweet.fields=author_id"
+        response = requests.get(query,headers=headers)
 
         #Converting response to dictionary
         jsonResp = response.json()
@@ -53,7 +55,8 @@ def results(term=None):
             embDict.append(embUrl["html"].replace("\n",""))
             i += 1
         
-        return render_template('results.html', rDict = embDict)
+        query = term
+        return render_template('results.html', rDict = embDict, term = term)
     
     return render_template('index.html')
         

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Latest Tweets{% endblock %}</h1>
+  <h1>{% block title %}Freshest Tweets on {{ term | safe }} {% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
