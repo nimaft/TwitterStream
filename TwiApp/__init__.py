@@ -2,6 +2,8 @@ import os
 
 from flask import (Flask, Blueprint, render_template, redirect, request, url_for)
 
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 def create_app(test_config=None):
     # create and configure the app
@@ -26,5 +28,6 @@ def create_app(test_config=None):
 
     from . import apiCall
     app.register_blueprint(apiCall.bp)
+    app.register_error_handler(404, page_not_found)
 
     return app
