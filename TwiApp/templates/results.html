@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Latest Tweets{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+
+<div class="card-columns">
+    {% for url in rDict %}
+        <div class="card bg-light">
+            <div class="card-body text-center">
+                {{ url | safe }}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
