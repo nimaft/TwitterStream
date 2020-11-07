@@ -120,4 +120,13 @@ blockquote.twitter-tweet a:focus {
     
   }
 
- 
+ /* Background styles
+*/
+
+.page-holder {
+  min-height: 100vh;
+}
+
+.bg-cover {
+  background-size: cover !important;
+}

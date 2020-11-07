@@ -1,13 +1,63 @@
 {% extends 'base.html' %}
 
-{% block header %}
-  <h1>{% block title %}Welcome to Nima does XYZ{% endblock %}</h1>
-{% endblock %}
+{% block title %} Twitter {% endblock %}
+
 
 {% block content %}
-  <form method="post">
-    <label for="query">Search Term</label>
-    <input name="query" id="query" required>
-    <input type="submit" value="FLY...">
-  </form>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <p class="h3 text-center"><kbd>Nima does "Twitter"</kbd></p>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col">
+      <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Pick a safe term!</strong> No one knows what you are going to get, it might be NSFW or disturbing content, after all it's Twitter!!!
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row align-items-center">
+    <div class="col-md">
+      <div class="card text-dark">
+        <div class="card-body">
+          <p class="h5">So... how did we get here?</p>
+          <ul class="list-unstyled">
+            <ul>
+              <li>You clicked on "run"</li>
+              <li>A request was sent to AWS to run a cloudformation stack</li>
+              <li>Once everything was in place you got here</li>
+              <li>Now you can use the form to search something on Twitter</li>
+              <li>You will get 10 latest tweets on what you searched</li>
+              <li>Come back and do this untill you reach maximum absurdity level</li>
+              <li>Check my <a href="https://github.com/nimaft/TwitterStream">GitHub</a> repo to see how I made this</li>
+              <li>Background: some random guy enjoying this webstie! you should too!</li>
+            </ul>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="card text-dark">
+        <div class="card-header">
+          Pick a word and lets see what people are saying on Twitter...
+        </div>
+        <div class="card-body">
+          <form method="post" class="was-validated">
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-sm" id="uname" placeholder="Enter Your Search Term" name="query" required>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <button type="submit" class="btn btn-primary">Lets Goooooooooo...</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock %}

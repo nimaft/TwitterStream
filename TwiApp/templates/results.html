@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 
-{% block header %}
-  <h1>{% block title %}Freshest Tweets on {{ term | safe }} {% endblock %}</h1>
-{% endblock %}
+{% block title %} Tweet Cards {% endblock %}
+
+{% block header %}{% endblock %}
 
 {% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <h1>Freshest Tweets on {{ term | safe }}</h1>
+    </div>
+  </div> 
 
 <a href="/" type="button" class="btn btn-primary btn-sm btn-block">Go Back</a>
 <div class="card-columns">

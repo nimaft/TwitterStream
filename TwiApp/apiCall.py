@@ -44,7 +44,6 @@ def results(term=None):
 
         #Looping through data dictionaries to get author_id and id
         #Using author_id and id to get embeded links for tweets
-        i=1
         embDict = []
         for x in data:
             urlReq = "https://publish.twitter.com/oembed?url=https://twitter.com/" + x["author_id"] + "/status/" + x["id"]
@@ -53,10 +52,8 @@ def results(term=None):
 
             #Storing embedded links in a list
             embDict.append(embUrl["html"].replace("\n",""))
-            i += 1
         
-        query = term
-        return render_template('results.html', rDict = embDict, term = term)
+        return render_template('results.html', rDict = embDict, term = term.upper())
     
     return render_template('index.html')
         
