@@ -1,6 +1,7 @@
 from flask import (Blueprint, render_template, redirect, request, url_for, flash)
 import requests
 from urllib.parse import quote_plus
+import os
 
 bp = Blueprint('apiCall', __name__)
 
@@ -29,7 +30,8 @@ def results(term=None):
         query = quote_plus(term)
 
         #Requesting tweets from Streaming API, returns 10 tweets
-        bt = 'AAAAAAAAAAAAAAAAAAAAAAONJQEAAAAA1wHsP7ozvwm0FPeVGgzqODg0Dhs%3DppJgXkaWKv3w2knqe7FSF2GquoVHzW4mTtPYYZotzeibD5OdSk'
+        #bt = 'AAAAAAAAAAAAAAAAAAAAAAONJQEAAAAA1wHsP7ozvwm0FPeVGgzqODg0Dhs%3DppJgXkaWKv3w2knqe7FSF2GquoVHzW4mTtPYYZotzeibD5OdSk'
+        bt = os.environ.get("BEARER")
 
         headers = {'Authorization': 'Bearer '+bt}
         query = "https://api.twitter.com/2/tweets/search/recent?query="+query+"&tweet.fields=author_id"
