@@ -6,11 +6,11 @@ def page_not_found(e):
     return render_template('404.html'), 404
 
 def create_app(test_config=None):
-    # create and configure the app
+    # create and configure the app (DB part is not used so it is commented out)
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
-        SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
+        SECRET_KEY='dev'#,
+        #DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
     )
 
     if test_config is None:
