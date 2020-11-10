@@ -30,7 +30,6 @@ def results(term=None):
         query = quote_plus(term)
 
         #Requesting tweets from Streaming API, returns 10 tweets
-        #bt = 'AAAAAAAAAAAAAAAAAAAAAAONJQEAAAAA1wHsP7ozvwm0FPeVGgzqODg0Dhs%3DppJgXkaWKv3w2knqe7FSF2GquoVHzW4mTtPYYZotzeibD5OdSk'
         bt = os.environ.get("BEARER")
 
         headers = {'Authorization': 'Bearer '+bt}
