@@ -14,13 +14,13 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t nmft/twiapp .
+      - docker build -t nmft/twiapp:latest .
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push nmft/twiapp
       - echo Writing image definitions file...
-      - printf '[{"name":"twiapp","imageUri":"nmft/twiapp"}]'
+      - printf '[{"name":"twiapp","imageUri":"%s"}]' nmft/twiapp:latest > imagedefinitions.json
 artifacts:
     files: imagedefinitions.json
