@@ -2,8 +2,8 @@ version: 0.2
 
 env:
   secrets-manager:
-    du: "username:dockerhub"
-    dp: "password:dockerhub"
+    du: "dockerhub:username"
+    dp: "dockerhub:password"
 
 phases:
   pre_build:
