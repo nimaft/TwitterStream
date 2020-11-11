@@ -1,5 +1,5 @@
 # TwitterStream
-(https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiYzhsZ2dLMGVISmNHNlkvV2lKeXluOEhHeDlyRmNNMW1ESlA1Y1dOaEhZSDBZbDJWd1h4REFLV3p4dXN2OXFueldqQ1BJMElVT1Y2ZHB3WTV4ME5kUXY4PSIsIml2UGFyYW1ldGVyU3BlYyI6IlIrNktYQkc5V015NUM5WXEiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
+[![Build Status](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiYzhsZ2dLMGVISmNHNlkvV2lKeXluOEhHeDlyRmNNMW1ESlA1Y1dOaEhZSDBZbDJWd1h4REFLV3p4dXN2OXFueldqQ1BJMElVT1Y2ZHB3WTV4ME5kUXY4PSIsIml2UGFyYW1ldGVyU3BlYyI6IlIrNktYQkc5V015NUM5WXEiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)]
 
 A simple web server powered by [Flask](https://flask.palletsprojects.com/), created to recieve and process 10 latest tweets based on user query.
 
