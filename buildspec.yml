@@ -2,8 +2,8 @@ version: 0.2
 
 env:
   secrets-manager:
-    du: "username:arn:aws:secretsmanager:us-east-1:771797342573:secret:dockerhub-UEONEt"
-    dp: "password:arn:aws:secretsmanager:us-east-1:771797342573:secret:dockerhub-UEONEt"
+    du: "username:dockerhub"
+    dp: "password:dockerhub"
 
 phases:
   pre_build:
