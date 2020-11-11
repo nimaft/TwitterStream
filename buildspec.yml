@@ -20,3 +20,7 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push nmft/twiapp
+      - echo Writing image definitions file...
+      - printf '[{"name":"twiapp","imageUri":"nmft/twiapp"}]'
+artifacts:
+    files: imagedefinitions.json
