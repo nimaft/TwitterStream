@@ -14,10 +14,9 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t nmft:twiapp .
-      - docker tag nmft:twiapp nmft:twiapp
+      - docker build -t nmft/twiapp .
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push nmft:twiapp
+      - docker push nmft/twiapp
