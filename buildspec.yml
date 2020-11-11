@@ -1,0 +1,23 @@
+version: 0.2
+
+env:
+  secrets-manager:
+    du: "username:arn:aws:secretsmanager:us-east-1:771797342573:secret:dockerhub-UEONEt"
+    dp: "password:arn:aws:secretsmanager:us-east-1:771797342573:secret:dockerhub-UEONEt"
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Docker Hub...
+      - docker login -u $du -p $dp         
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - docker build -t nmft:twiapp .
+      - docker tag nmft:twiapp nmft:twiapp
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push nmft:twiapp
