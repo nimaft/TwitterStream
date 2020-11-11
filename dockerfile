@@ -5,4 +5,4 @@ RUN pip install -r ./requirements.txt
 COPY . .
 RUN rm -rf /var/cache/apk/*
 RUN echo Starting python and starting the Flask service...
-ENTRYPOINT ["waitress-serve","--call","TwiApp:create_app"]
+ENTRYPOINT ["waitress-serve","--port","80","--call","TwiApp:create_app"]
