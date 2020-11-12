@@ -1,5 +1,6 @@
-# TwitterStream
-A simple web server powered by [Flask](https://flask.palletsprojects.com/), created to recieve and process 10 latest tweets based on user query.
+# TwitterStream :bird:
+A simple web server powered by [Flask](https://flask.palletsprojects.com/), created to process and display 10 latest tweets based on user query.
+Check out the app @ http://twitter.nimadoes.xyz/
 
 ## Overview
 * User enters a search term.
@@ -38,8 +39,33 @@ Although this is a simple app. I used Flask application factory to make it scala
  * Templates: used by Flask to render dynamic webpages. Base template holds links to stylesheets and scripts.
  
  
- #### At this point you might ask: what is the point? I created this little web app to use with a CI/CD pipeline on Amazon AWS. Here are the other pipeline related repos:
- * 
- * 
- * 
+ #### At this point you might ask: what is the point? I created this little web app to use with a CI/CD pipeline on Amazon AWS. Let's review how everything comes together with AWS.
+
+
+## CI/CD Pipeline with AWS :cloud:
+![design](/TwiApp/static/TwiApp.png)
+Following services were used in creating the pipeline on AWS:
+* **CodeBuild:** 
+  * Pulls the source code for Flask app from this repo.
+  * Reads buildspec.yaml and builds an image.
+  * Uploads the image to Docker Hub :whale:.
+  * Creates imagedefinitions.json [used by CodePipeline]
+* **CodePipeline:**
+  * Source stage: monitors main branch of this repository, upon detecting an update, triggeres build stage.
+  * Build stage: triggers the build project defined in CodeBuild. Upon successful build, deploy stage is trigerred.
+  * Deploy stage: uses imagedefinition.json, passes it on to ECS and runs a fargate task.
+* **AWS Secrets Manager:** provides Docker hub credentials to CodeBuild and Elastic Container Service.
+* **AWS Systems Manager > Parameter Store:** provides Twitter bearer key to ECS task definition to be used as an environmental variable for the container.
+* **Elastic Container Service (ECS):**
+  * Contains a task definition directing AWS how to deploy Docker images.
+    * Container port mapping and environmental variables are set withing task definition.
+  * An ECS service Contains the deployment settings (which Task Definition to use), auto scaling policy, and load balancer settings. (Similar to Kubernetes Deployment)
+  * I used fargate as the compute engine for the containers.
+* **Application Load Balancer:**
+  * Helps having consistent IP for your application.
+  * When running multiple containers (tasks) within an ECS service, it helps distributing the traffic.
+  * ECS automatically registers and degister tasks with ALB's target group when tasks are created or deleted.
+* **Route 53:** I used route 53 to set a custom domain for ALB.
  
+#### Whats next?
+:mage_man: Creating a Cloudformation stack to easily create/delete all the services for this project.
