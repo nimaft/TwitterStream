@@ -45,6 +45,8 @@ Although this is a simple app. I used Flask application factory to make it scala
 ## CI/CD Pipeline with AWS :cloud:
 ![design](/TwiApp/static/TwiApp.png)
 Following services were used in creating the pipeline on AWS:
+* **AWS Identity and Access Management (IAM):** defining permissions for ECS and containers.
+* **Amazon Virtual Private Cloud (VPC):** where to run containers and load balancer.
 * **CodeBuild:** 
   * Pulls the source code for Flask app from this repo.
   * Reads buildspec.yaml and builds an image.
@@ -60,7 +62,7 @@ Following services were used in creating the pipeline on AWS:
   * Contains a task definition directing AWS how to deploy Docker images.
     * Container port mapping and environmental variables are set withing task definition.
   * An ECS service Contains the deployment settings (which Task Definition to use), auto scaling policy, and load balancer settings. (Similar to Kubernetes Deployment)
-  * I used fargate as the compute engine for the containers.
+  * I used **Fargate** as the compute engine for the containers.
 * **Application Load Balancer:**
   * Helps having consistent IP for your application.
   * When running multiple containers (tasks) within an ECS service, it helps distributing the traffic.
@@ -68,4 +70,4 @@ Following services were used in creating the pipeline on AWS:
 * **Route 53:** I used route 53 to set a custom domain for ALB.
  
 #### Whats next?
-:mage_man: Creating a Cloudformation stack to easily create/delete all the services for this project.
+:mage_man: Creating a Cloudformation template to easily provision services for this project.
