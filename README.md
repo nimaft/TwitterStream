@@ -7,7 +7,7 @@ Check out the app @ http://twitter.nimadoes.xyz/
 * Flask processes the request and extracts the query term.
 * It uses Twitter API v2 [Filtered Stream](https://developer.twitter.com/en/docs/twitter-api/tweets/filtered-stream/introduction) endpoint to filter the complete stream of real-time public Tweets and stores the response.
 * Twitter's response is parsed and *author_id* and *id* are extracted from it.
-* Using the extracted values, webserver submits requests to Twitter [oEmbed API](https://developer.twitter.com/en/docs/twitter-api/v1/tweets/post-and-engage/api-reference/get-statuses-oembed) to recieve the URL of the Tweet to be embedded.
+* Using the extracted values, webserver submits requests to Twitter [oEmbed API](https://developer.twitter.com/en/docs/twitter-api/v1/tweets/post-and-engage/api-reference/get-statuses-oembed) to receive the URL of the Tweet to be embedded.
 * Once all the embed URLs are created. Flask stores them in a list and pass them on to results page.
 * Results page takes the URL list and by using Jinja2 creates the page, embeds all the tweets and display them to user.
 
@@ -22,16 +22,16 @@ Although this is a simple app. I used Flask application factory to make it scala
  
  
 * HTTP methods:
-  * index page recieves accepts both GET and POST methods:
+  * index page receives accepts both GET and POST methods:
     * GET: renders the template for index.html
     * POST: user has searched for a term > redirects to /results/<term> page
-  * reults page (when recieving a search query)
+  * results page (when receiving a search query)
     * GET
       * confirms the search term is not empty
-      * converts search term to url friendly term (e.g. converts #NYC to %23NYC)
+      * converts search term to URL friendly term (e.g. converts #NYC to %23NYC)
       * sends the request to Twitter and stores the response
       * converts the response from JSON to Python dictionary and stores data in a list
-      * loops throught list values, extracts author_id and id, creates a string and submit it to oEmbed api to get embed URL
+      * loops through list values, extracts author_id and id, creates a string and submit it to oEmbed API to get embed URL
       * stores the embed URLs in a list, passes search term, results list and renders results.html
     * POST: should not accept receive requests, in case it does, renders index.html
  
@@ -53,9 +53,9 @@ Following services were used in creating the pipeline on AWS:
   * Uploads the image to Docker Hub :whale:.
   * Creates imagedefinitions.json [used by CodePipeline]
 * **CodePipeline:**
-  * Source stage: monitors main branch of this repository, upon detecting an update, triggeres build stage.
-  * Build stage: triggers the build project defined in CodeBuild. Upon successful build, deploy stage is trigerred.
-  * Deploy stage: uses imagedefinition.json, passes it on to ECS and runs a fargate task.
+  * Source stage: monitors main branch of this repository, upon detecting an update, triggers build stage.
+  * Build stage: triggers the build project defined in CodeBuild. Upon successful build, deploy stage is triggered.
+  * Deploy stage: uses imagedefinition.json, passes it on to ECS and runs a Fargate task.
 * **AWS Secrets Manager:** provides Docker hub credentials to CodeBuild and Elastic Container Service.
 * **AWS Systems Manager > Parameter Store:** provides Twitter bearer key to ECS task definition to be used as an environmental variable for the container.
 * **Elastic Container Service (ECS):**
@@ -66,8 +66,8 @@ Following services were used in creating the pipeline on AWS:
 * **Application Load Balancer:**
   * Helps having consistent IP for your application.
   * When running multiple containers (tasks) within an ECS service, it helps distributing the traffic.
-  * ECS automatically registers and degister tasks with ALB's target group when tasks are created or deleted.
+  * ECS automatically registers and deregister tasks with ALB's target group when tasks are created or deleted.
 * **Route 53:** I used route 53 to set a custom domain for ALB.
  
-#### Whats next?
-:mage_man: Creating a Cloudformation template to easily provision services for this project.
+#### What’s next?
+:mage_man: Creating a CloudFormation template to easily provision services for this project.
