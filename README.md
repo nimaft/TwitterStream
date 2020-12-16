@@ -1,6 +1,6 @@
 # TwitterStream :bird:
 A simple web server powered by [Flask](https://flask.palletsprojects.com/), created to process and display 10 latest tweets based on user query.
-Check out the app @ http://twitter.nimadoes.xyz/
+Check out the app @ https://twitter.nimadoes.xyz/
 
 ## Overview
 * User enters a search term.
